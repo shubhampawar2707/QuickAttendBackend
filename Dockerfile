@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/SamsTrack-0.0.1-SNAPSHOT app.jar
+COPY --from=build /target/SamsTrack-0.0.1-SNAPSHOT sams-track.jar
 EXPOSE 8080
-ENTRYPOINT [ "java","-jar","app.jar" ]
+ENTRYPOINT [ "java","-jar","sams-track.jar" ]
