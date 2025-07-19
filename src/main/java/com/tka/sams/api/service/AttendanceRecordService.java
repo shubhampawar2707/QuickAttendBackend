@@ -20,10 +20,10 @@ public class AttendanceRecordService {
 	public List<AttendanceRecord> getAllAttendanceRecords() {
 		List<AttendanceRecord> records = dao.getAllAttendanceRecords();
 		 
-		List<AttendanceRecord> distinctAttendanceList = records.stream()
-				.collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(AttendanceRecord::getId)))).stream()
-				.collect(Collectors.toList());
-		return distinctAttendanceList;
+		if (records == null) {
+    records = Collections.emptyList(); // avoid NullPointerException
+}
+		return records.stream().collect(Collectors.toList());
 		
 	}
 	
